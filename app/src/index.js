@@ -3,12 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
+import { applyMiddleware, createStore } from 'redux';
+import {jokeReducer} from './reducers/JokeReducer';
 import * as serviceWorker from './serviceWorker';
 
+const logger = ({ getState }) => next => action => {
+  next(action);
+};
+
+let store = createStore(jokeReducer, applyMiddleware(logger, thunk));
+
 ReactDOM.render(
-  // <Provider>
+   <Provider store={store}>
     <App />,
-  // </Provider>,
+   </Provider>,
   document.getElementById('root')
 );
 
