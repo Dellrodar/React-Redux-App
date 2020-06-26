@@ -13,7 +13,7 @@ export const getJoke = () => dispatch => {
   axios
     .get("http://api.icndb.com/jokes/random", { headers })
     .then(res => {
-      dispatch({ type: FETCHING_JOKE_SUCCESS, payload: res.data.joke });
+      dispatch({ type: FETCHING_JOKE_SUCCESS, payload: res.data.value.joke });
     })
     .catch(err => {
       dispatch({

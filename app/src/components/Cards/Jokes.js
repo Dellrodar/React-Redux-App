@@ -15,8 +15,8 @@ const Jokes = props => {
   const classes = useStyles();
 
   useEffect(() => {
-    getJoke()
-  })
+    props.getJoke()
+  },[props.getJoke])
 
   if(props.fetching){
     return <h2 className="loading">Chuck is roundhouse kicking a new joke your way...</h2>
@@ -28,7 +28,7 @@ const Jokes = props => {
       <CardContent>
         {props.CNJoke}
       </CardContent>
-      <Button onClick={() => getJoke()}>Click for another joke!</Button>
+      <Button onClick={() => props.getJoke()}>Click for another joke!</Button>
     </Card>
     )}
 

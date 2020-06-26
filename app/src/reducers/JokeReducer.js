@@ -13,18 +13,19 @@ export const jokeReducer = (state = initialState, action) => {
     return {
       ...state,
       isFetching: true,
-      error: " "
+      error: ""
     };
   case FETCHING_JOKE_SUCCESS:
     return {
       ...state,
       CNJoke: action.payload,
       isFetching: false,
-      error: " "
+      error: ""
     };
     case FETCHING_JOKE_FAILURE:
       return {
         ...state,
+        isFetching: false,
         error: action.payload
       };
     default:
